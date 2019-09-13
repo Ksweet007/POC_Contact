@@ -1,7 +1,23 @@
 {
-  "person": {
-    "identity": {},
-    "contact": {},
-    "emergencycontacts": {}
-  }
+  "persons": [
+    {
+      "identity": {},
+      "contact": {
+        "address": {
+          "country": "United States of America",
+          "addressline1": "1234 Road ln",
+          "suite": "",
+          "addressline2": "",
+          "city": "Cincinnati",
+          "state": "Ohio",
+          "zipcode": "45210-1234",
+          "county": ""
+        },
+        "phone": {},
+        "email": {},
+        "websocial": {}
+      },
+      "emergencycontacts": {}
+    }
+  ]
 }
