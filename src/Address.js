@@ -1,15 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Select, InputField } from "@paycor/form-elements";
+import { getQueryStringParameters } from "./utils";
+import * as personApi from "./api/personApi";
 
-function Address() {
-  const countries = [
-    { id: "usa-id", label: "United States of America", value: "USA" },
-    { id: "another-id", label: "some value", value: "some more value" }
-  ];
-  const states = [
-    { id: "oh-id", label: "Ohio", value: "OH" },
-    { id: "ky-id", label: "Kentucky", value: "KY" }
-  ];
+const countries = [
+  { id: "usa-id", label: "United States of America", value: "USA" },
+  { id: "another-id", label: "some value", value: "some more value" }
+];
+const states = [
+  { id: "oh-id", label: "Ohio", value: "OH" },
+  { id: "ky-id", label: "Kentucky", value: "KY" }
+];
+
+const personModel = {
+  id: 1,
+  identity: {},
+  contact: {
+    address: {
+      country: "United States of America",
+      addressline1: "1234 Road ln",
+      suite: "",
+      addressline2: "",
+      city: "Cincinnati",
+      state: "Ohio",
+      zipcode: "45210-1234",
+      county: ""
+    },
+    phone: {},
+    email: {},
+    websocial: {}
+  },
+  emergencycontacts: {}
+};
+
+function Address(props) {
+  const [person, setPerson] = useState(personModel);
+
+  useEffect(() => {
+    let queryStringParameters = getQueryStringParameters();
+    let personId = queryStringParameters["personId"];
+    let isMounted = true;
+    personApi.getPersonById(personId).then(person => {
+      if (isMounted) {
+        setPerson(person);
+      }
+    });
+
+    return () => (isMounted = false);
+  }, [personModel.id]);
+
   return (
     <>
       <h2>Address</h2>
@@ -42,6 +81,7 @@ function Address() {
             onChange={value => console.log(value)}
             label={"Address Line 1*"}
             placeholder={"Text"}
+            value={person.contact.address.addressline1}
           />
         </div>
         <div
@@ -56,6 +96,7 @@ function Address() {
             onChange={value => console.log(value)}
             label={"Suite"}
             placeholder={"Text"}
+            value={person.contact.address.suite}
           />
         </div>
         <div style={{ margin: "5px", width: "508px" }}>
@@ -63,6 +104,7 @@ function Address() {
             onChange={value => console.log(value)}
             label={"Address Line 2"}
             placeholder={"Text"}
+            value={person.contact.address.addressline2}
           />
         </div>
         <div
@@ -77,6 +119,7 @@ function Address() {
             onChange={value => console.log(value)}
             label={"City*"}
             placeholder={"Text"}
+            value={person.contact.address.city}
           />
         </div>
         <div
@@ -106,6 +149,7 @@ function Address() {
             onChange={value => console.log(value)}
             label={"Zip Code*"}
             placeholder={"Text"}
+            value={person.contact.address.zipcode}
           />
         </div>
         <div
@@ -119,6 +163,7 @@ function Address() {
             onChange={value => console.log(value)}
             label={"County"}
             placeholder={"Text"}
+            value={person.contact.address.county}
           />
         </div>
       </form>
