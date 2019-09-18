@@ -3,8 +3,23 @@ import { Select, InputField } from "@paycor/form-elements";
 import Address from "./Address";
 import Button from "@paycor/button";
 import { Icons } from "@paycor/icon";
+import * as personApi from "./api/personApi";
+import { toast } from "react-toastify";
 
 function Contact(props) {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+  function handleSave(savedUser) {
+    debugger;
+    toast.success("saved!");
+  }
+
+  function savePerson() {
+    //Validate
+    setIsFormSubmitted(true);
+    personApi.editPerson(props.person).then(handleSave);
+  }
+
   return (
     <>
       <div style={{ width: "900px" }}>
@@ -18,11 +33,7 @@ function Contact(props) {
           <Button
             type={Button.Types.SAVE}
             icon={Icons.Checkmark}
-            onClick={() =>
-              alert(
-                `Save Clicked Person Name is ${props.person.contact.address.addressline1}`
-              )
-            }
+            onClick={() => savePerson()}
           >
             Save
           </Button>

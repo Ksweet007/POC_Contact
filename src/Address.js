@@ -11,11 +11,6 @@ const states = [
 ];
 
 function Address(props) {
-  //debugger;
-  const [person, setPerson] = useState(props.person);
-
-  debugger;
-  var foo = props;
   return (
     <>
       <h2>Address</h2>
@@ -48,7 +43,6 @@ function Address(props) {
             onChange={handleChange}
             label={"Address Line 1*"}
             value={props.person.contact.address.addressline1}
-            //value={person.contact.address.addressline1}
           />
         </div>
         <div
@@ -62,14 +56,14 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"Suite"}
-            value={person.contact.address.suite}
+            value={props.person.contact.address.suite}
           />
         </div>
         <div style={{ margin: "5px", width: "508px" }}>
           <InputField
             onChange={value => console.log(value)}
             label={"Address Line 2"}
-            value={person.contact.address.addressline2}
+            value={props.person.contact.address.addressline2}
           />
         </div>
         <div
@@ -83,7 +77,7 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"City*"}
-            value={person.contact.address.city}
+            value={props.person.contact.address.city}
           />
         </div>
         <div
@@ -112,7 +106,7 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"Zip Code*"}
-            value={person.contact.address.zipcode}
+            value={props.person.contact.address.zipcode}
           />
         </div>
         <div
@@ -125,7 +119,7 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"County"}
-            value={person.contact.address.county}
+            value={props.person.contact.address.county}
           />
         </div>
       </form>
@@ -133,7 +127,6 @@ function Address(props) {
   );
 
   function handleChange(event) {
-    debugger;
     const userCopy = { ...props.person };
     userCopy.contact.address.addressline1 = event;
     props.sessionFunction(userCopy);
