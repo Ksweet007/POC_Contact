@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Select, InputField } from "@paycor/form-elements";
-import { getQueryStringParameters } from "./utils";
-import * as personApi from "./api/personApi";
 
 const countries = [
   { id: "usa-id", label: "United States of America", value: "USA" },
@@ -12,41 +10,8 @@ const states = [
   { id: "ky-id", label: "Kentucky", value: "KY" }
 ];
 
-const personModel = {
-  id: 1,
-  identity: {},
-  contact: {
-    address: {
-      country: "",
-      addressline1: "",
-      suite: "",
-      addressline2: "",
-      city: "",
-      state: "",
-      zipcode: "",
-      county: ""
-    },
-    phone: {},
-    email: {},
-    websocial: {}
-  },
-  emergencycontacts: {}
-};
-
 function Address(props) {
-  const [person, setPerson] = useState(personModel);
-  useEffect(() => {
-    let isMounted = true;
-    if (props.personId) {
-      personApi.getPersonById(props.personId).then(person => {
-        if (isMounted) {
-          setPerson(person);
-        }
-      });
-    }
-
-    return () => (isMounted = false);
-  }, [props.personId]);
+  const [person] = useState(props.person);
 
   return (
     <>

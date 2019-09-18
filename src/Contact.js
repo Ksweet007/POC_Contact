@@ -5,15 +5,11 @@ import Button from "@paycor/button";
 import { Icons } from "@paycor/icon";
 
 function Contact(props) {
-  const countries = [
-    { id: "usa-id", label: "United States of America", value: "USA" },
-    { id: "another-id", label: "some value", value: "some more value" }
-  ];
   return (
     <>
       <div style={{ width: "900px" }}>
         <div>
-          <Address personId={props.personId} />
+          <Address person={props.person} />
         </div>
         <div style={{ float: "right", margin: "20px" }}>
           <Button
