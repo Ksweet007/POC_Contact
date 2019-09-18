@@ -11,8 +11,11 @@ const states = [
 ];
 
 function Address(props) {
-  const [person] = useState(props.person);
+  //debugger;
+  const [person, setPerson] = useState(props.person);
 
+  debugger;
+  var foo = props;
   return (
     <>
       <h2>Address</h2>
@@ -42,9 +45,10 @@ function Address(props) {
           }}
         >
           <InputField
-            onChange={value => console.log(value)}
+            onChange={handleChange}
             label={"Address Line 1*"}
-            value={person.contact.address.addressline1}
+            value={props.person.contact.address.addressline1}
+            //value={person.contact.address.addressline1}
           />
         </div>
         <div
@@ -127,6 +131,13 @@ function Address(props) {
       </form>
     </>
   );
+
+  function handleChange(event) {
+    debugger;
+    const userCopy = { ...props.person };
+    userCopy.contact.address.addressline1 = event;
+    props.sessionFunction(userCopy);
+  }
 }
 
 export default Address;

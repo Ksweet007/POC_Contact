@@ -28,7 +28,7 @@ function PersonalInformation(props) {
           <p>Here is the Identity Tab!</p>
         </TabGroup.Tab>
         <TabGroup.Tab id={"contact"} title={"Contact"} key={2} active={true}>
-          <Contact person={person} />
+          <Contact person={person} sessionFunction={setPerson} />
         </TabGroup.Tab>
         <TabGroup.Tab
           id={"emergencyContact"}
