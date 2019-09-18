@@ -17,13 +17,13 @@ const personModel = {
   identity: {},
   contact: {
     address: {
-      country: "United States of America",
-      addressline1: "1234 Road ln",
+      country: "",
+      addressline1: "",
       suite: "",
       addressline2: "",
-      city: "Cincinnati",
-      state: "Ohio",
-      zipcode: "45210-1234",
+      city: "",
+      state: "",
+      zipcode: "",
       county: ""
     },
     phone: {},
@@ -35,19 +35,18 @@ const personModel = {
 
 function Address(props) {
   const [person, setPerson] = useState(personModel);
-
   useEffect(() => {
-    let queryStringParameters = getQueryStringParameters();
-    let personId = queryStringParameters["personId"];
     let isMounted = true;
-    personApi.getPersonById(personId).then(person => {
-      if (isMounted) {
-        setPerson(person);
-      }
-    });
+    if (props.personId) {
+      personApi.getPersonById(props.personId).then(person => {
+        if (isMounted) {
+          setPerson(person);
+        }
+      });
+    }
 
     return () => (isMounted = false);
-  }, [personModel.id]);
+  }, [props.personId]);
 
   return (
     <>
@@ -80,7 +79,6 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"Address Line 1*"}
-            placeholder={"Text"}
             value={person.contact.address.addressline1}
           />
         </div>
@@ -95,7 +93,6 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"Suite"}
-            placeholder={"Text"}
             value={person.contact.address.suite}
           />
         </div>
@@ -103,7 +100,6 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"Address Line 2"}
-            placeholder={"Text"}
             value={person.contact.address.addressline2}
           />
         </div>
@@ -118,7 +114,6 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"City*"}
-            placeholder={"Text"}
             value={person.contact.address.city}
           />
         </div>
@@ -148,7 +143,6 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"Zip Code*"}
-            placeholder={"Text"}
             value={person.contact.address.zipcode}
           />
         </div>
@@ -162,7 +156,6 @@ function Address(props) {
           <InputField
             onChange={value => console.log(value)}
             label={"County"}
-            placeholder={"Text"}
             value={person.contact.address.county}
           />
         </div>

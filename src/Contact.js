@@ -4,7 +4,7 @@ import Address from "./Address";
 import Button from "@paycor/button";
 import { Icons } from "@paycor/icon";
 
-function Contact() {
+function Contact(props) {
   const countries = [
     { id: "usa-id", label: "United States of America", value: "USA" },
     { id: "another-id", label: "some value", value: "some more value" }
@@ -13,7 +13,7 @@ function Contact() {
     <>
       <div style={{ width: "900px" }}>
         <div>
-          <Address />
+          <Address personId={props.personId} />
         </div>
         <div style={{ float: "right", margin: "20px" }}>
           <Button
