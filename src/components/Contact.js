@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Select, InputField } from "@paycor/form-elements";
 import Address from "./Address";
 import Button from "@paycor/button";
 import { Icons } from "@paycor/icon";
-import * as personApi from "./api/personApi";
+import * as personApi from "../api/personApi";
 import { toast } from "react-toastify";
 import Phone from "./Phone";
 
