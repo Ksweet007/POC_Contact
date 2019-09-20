@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TabGroup from "@paycor/tabs";
 import Contact from "./Contact";
-import { defaultPersonModel } from "./models/PersonModel";
-import * as personApi from "./api/personApi";
+import { defaultPersonModel } from "../models/PersonModel";
+import * as personApi from "../api/personApi";
 
 function PersonalInformation(props) {
   const [person, setPerson] = useState(defaultPersonModel);

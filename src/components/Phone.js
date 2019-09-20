@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputWithSelector from "./reusable/InputWithSelector";
+import InputWithSelector from "../reusable/InputWithSelector";
 
 const phoneTypes = [
   { id: "home-id", label: "Home", value: "home" },
