@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Select, InputField } from "@paycor/form-elements";
-import Address from "./Address";
+import Address from "./components/Address";
 import Button from "@paycor/button";
 import { Icons } from "@paycor/icon";
 import * as personApi from "./api/personApi";
