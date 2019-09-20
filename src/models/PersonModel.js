@@ -12,7 +12,7 @@ export const defaultPersonModel = {
       zipcode: "",
       county: ""
     },
-    phone: {},
+    phonenumbers: [{}, {}],
     email: {},
     websocial: {}
   },

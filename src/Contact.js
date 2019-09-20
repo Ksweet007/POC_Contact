@@ -5,6 +5,7 @@ import Button from "@paycor/button";
 import { Icons } from "@paycor/icon";
 import * as personApi from "./api/personApi";
 import { toast } from "react-toastify";
+import Phone from "./Phone";
 
 function Contact(props) {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -23,11 +24,14 @@ function Contact(props) {
   return (
     <>
       <div style={{ width: "900px" }}>
-        <div>
+        <div style={{ margin: "15px", display: "inline-block" }}>
           <Address
             person={props.person}
             sessionFunction={props.sessionFunction}
           />
+        </div>
+        <div style={{ margin: "15px", display: "inline-block" }}>
+          <Phone />
         </div>
         <div style={{ float: "right", margin: "20px" }}>
           <Button
